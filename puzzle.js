@@ -8,8 +8,8 @@ var otherTile; //blank tile
 var turns = 0;
 
 var imgOrder = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
-var imgInitial = ["1", "3", "2", "4", "5", "6", "7", "8", "9"];
-//var imgInitial = ["4", "2", "3","8", "5", "1", "6", "7", "9",];
+//var imgInitial = ["1", "3", "2", "4", "5", "6", "7", "8", "9"];
+var imgInitial = ["4", "2", "3","8", "5", "1", "6", "7", "9",];
 
 var lastImage = document.querySelector(".lastImage")
 
