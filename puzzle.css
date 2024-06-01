@@ -1,0 +1,102 @@
+body {
+    background: url(./Beethoven-bg.jpg) no-repeat center center fixed;
+    background-size: cover;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    color: #0c67ae;
+}
+
+#title {
+    height: 9.375rem;
+    width: 25rem;
+}
+
+#board {
+    width: 22.5rem;
+    height: 22.5rem;
+    background-color: lightblue;
+    border: 10px solid #0c67ae;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#board img {
+    width: 7.375rem;
+    height: 7.375rem;
+    border: 1px solid #0c67ae;
+}
+
+.lastImage {
+    width: 89px;
+    height: 89px;
+    background: url(./0.jpeg);
+    border: 10px solid #0c67ae;
+    margin: 9rem auto;
+    display: flex;
+}
+
+.puzzleBox {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 9rem;
+}
+
+
+@media (max-width: 576px) {
+    #board {
+        width: 166px;
+        height: 166px;
+    }
+
+    #board img {
+        width: 40px;
+        height: 40px;
+    }
+
+    #title {
+        height: 10.375rem;
+        width: 19rem;
+    }
+
+    .puzzleBox {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .lastImage {
+        margin: 1rem auto;
+    }
+}
+
+
+@media (max-width: 768px) {
+    #board {
+        width: 285px;
+        height: 285px;
+    }
+
+    #board img {
+        width: 93px;
+        height: 93px;
+    }
+
+    .puzzleBox {
+        gap: 2rem;
+    }
+}
+
+
+@media (min-width: 1201px) {
+
+    #board {
+        width: 360px;
+        height: 360px;
+    }
+
+    #board img {
+        width: 118px;
+        height: 118px;
+    }
+}
