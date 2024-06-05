@@ -1,4 +1,5 @@
 
+
 var rows = 3;
 var columns = 3;
 
@@ -7,37 +8,39 @@ var otherTile; //blank tile
 
 var turns = 0;
 
+
 var imgOrder = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
 //var imgInitial = ["1", "3", "2", "4", "5", "6", "7", "8", "9"];
 var imgInitial = ["4", "2", "3","8", "5", "1", "6", "7", "9",];
 
-var lastImage = document.querySelector(".lastImage")
+var lastImage = document.querySelector(".lastImage");
 
 window.onload = function() {
-    for (let r=0; r < rows; r++) {
-        for (let c=0; c < columns; c++) {
-
-            //<img id="0-0" src="1.jepg">
+    for (let r = 0; r < rows; r++) {
+        for (let c = 0; c < columns; c++) {
             let tile = document.createElement("img");
             tile.id = r.toString() + "-" + c.toString();
-            tile.src = imgInitial.shift() + ".jpeg";
+            tile.src = "assets/images/" + imgInitial.shift() + ".jpeg";
 
-            //DRAG FUNCTIONALITY
-            tile.addEventListener("dragstart", dragStart);  //click an image to drag
-            tile.addEventListener("dragover", dragOver);    //moving image around while clicked
-            tile.addEventListener("dragenter", dragEnter);  //dragging image onto another one
-            tile.addEventListener("dragleave", dragLeave);  //dragged image leaving anohter image
-            tile.addEventListener("drop", dragDrop);        //drag an image over another image, drop the image
-            tile.addEventListener("dragend", dragEnd);      //after drag drop, swap the two tiles
+            // DRAG FUNCTIONALITY
+            tile.addEventListener("dragstart", dragStart); 
+            tile.addEventListener("dragover", dragOver);
+            tile.addEventListener("dragenter", dragEnter);
+            tile.addEventListener("dragleave", dragLeave);
+            tile.addEventListener("drop", dragDrop);
+            tile.addEventListener("dragend", dragEnd);
+
+            tile.addEventListener("touchstart", touchStart);
+            tile.addEventListener("touchmove", touchMove);
+            tile.addEventListener("touchend", touchEnd);
 
             document.getElementById("board").append(tile);
-
         }
     }
 }
 
 function dragStart() {
-    currTile = this; //this refers to the img tile being dragged
+    currTile = this; 
 }
 
 function dragOver(e) {
@@ -48,16 +51,37 @@ function dragEnter(e) {
     e.preventDefault();
 }
 
-function dragLeave() {
-
-}
+function dragLeave() {}
 
 function dragDrop() {
-    otherTile = this; //this refers to the img tile being dropped on
+    otherTile = this; 
 }
 
-
 function dragEnd() {
+    swapTiles();
+}
+
+function touchStart(e) {
+    e.preventDefault();
+    currTile = e.target;
+}
+
+function touchMove(e) {
+    e.preventDefault();
+    const touch = e.touches[0];
+    otherTile = document.elementFromPoint(touch.clientX, touch.clientY);
+}
+
+function touchEnd(e) {
+    e.preventDefault();
+    swapTiles();
+}
+
+function swapTiles() {
+    if (!otherTile || currTile === otherTile || !otherTile.src.includes(".jpeg")) {
+        return;
+    }
+
     let currCoords = currTile.id.split("-");
     let r = parseInt(currCoords[0]);
     let c = parseInt(currCoords[1]);
@@ -94,7 +118,7 @@ function dragEnd() {
 function checkCompletion() {
     let tiles = document.querySelectorAll("#board img");
     for (let i = 0; i < tiles.length; i++) {
-        if (tiles[i].src.includes(imgOrder[i] + ".jpeg") === false) {
+        if (!tiles[i].src.includes(imgOrder[i] + ".jpeg")) {
             return false;
         }
     }

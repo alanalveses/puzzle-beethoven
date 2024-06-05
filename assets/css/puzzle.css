@@ -1,5 +1,5 @@
 body {
-    background: url(./Beethoven-bg.jpg) no-repeat center center fixed;
+    background: url(../images/Beethoven-bg.jpg) no-repeat center center fixed;
     background-size: cover;
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
@@ -30,7 +30,7 @@ body {
 .lastImage {
     width: 8rem;
     height: 8rem;
-    background: url(10.jpeg);
+    background: url(../images/10.jpeg);
     background-size: cover;
     border: 3px solid #0c67ae;
     margin: 9rem auto;
@@ -43,7 +43,6 @@ body {
     justify-content: center;
     gap: 9rem;
 }
-
 
 @media (max-width: 576px) {
     #board {
@@ -71,7 +70,6 @@ body {
     }
 }
 
-
 @media (max-width: 768px) {
     #board {
         width: 285px;
@@ -88,9 +86,7 @@ body {
     }
 }
 
-
 @media (min-width: 1201px) {
-
     #board {
         width: 360px;
         height: 360px;
